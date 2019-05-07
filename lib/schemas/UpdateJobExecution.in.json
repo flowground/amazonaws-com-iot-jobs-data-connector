@@ -1,0 +1,104 @@
+{
+    "type": "object",
+    "properties": {
+        "thingName": {
+            "required": true,
+            "type": "string"
+        },
+        "jobId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "executionNumber": {
+                    "description": "Optional. A number that identifies a particular job execution on a particular device.",
+                    "type": "integer"
+                },
+                "expectedVersion": {
+                    "description": "Optional. The expected current version of the job execution. Each time you update the job execution, its version is incremented. If the version of the job execution stored in Jobs does not match, the update is rejected with a VersionMismatch error, and an ErrorResponse that contains the current job execution status data is returned. (This makes it unnecessary to perform a separate DescribeJobExecution request in order to obtain the job execution status data.)",
+                    "type": "integer"
+                },
+                "includeJobDocument": {
+                    "description": "Optional. When set to true, the response contains the job document. The default is false.",
+                    "type": "boolean"
+                },
+                "includeJobExecutionState": {
+                    "description": "Optional. When included and set to true, the response contains the JobExecutionState data. The default is false.",
+                    "type": "boolean"
+                },
+                "status": {
+                    "description": "The new status for the job execution (IN_PROGRESS, FAILED, SUCCESS, or REJECTED). This must be specified on every update.",
+                    "enum": [
+                        "QUEUED",
+                        "IN_PROGRESS",
+                        "SUCCEEDED",
+                        "FAILED",
+                        "TIMED_OUT",
+                        "REJECTED",
+                        "REMOVED",
+                        "CANCELED"
+                    ],
+                    "type": "string"
+                },
+                "statusDetails": {
+                    "description": " Optional. A collection of name/value pairs that describe the status of the job execution. If not specified, the statusDetails are unchanged.",
+                    "items": {
+                        "properties": {
+                            "key": {
+                                "maxLength": 128,
+                                "minLength": 1,
+                                "pattern": "[a-zA-Z0-9:_-]+",
+                                "type": "string"
+                            },
+                            "value": {
+                                "maxLength": 1024,
+                                "minLength": 1,
+                                "pattern": "[^\\p\\{C\\}]*\\+",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "stepTimeoutInMinutes": {
+                    "description": "Specifies the amount of time this device has to finish execution of this job. If the job execution status is not set to a terminal state before this timer expires, or before the timer is reset (by again calling <code>UpdateJobExecution</code>, setting the status to <code>IN_PROGRESS</code> and specifying a new timeout value in this field) the job execution status will be automatically set to <code>TIMED_OUT</code>. Note that setting or resetting this timeout has no effect on that job execution timeout which may have been specified when the job was created (<code>CreateJob</code> using field <code>timeoutConfig</code>).",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

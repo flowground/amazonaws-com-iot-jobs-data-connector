@@ -1,0 +1,108 @@
+{
+    "title": "AWS IoT Jobs Data Plane",
+    "description": "<p>AWS IoT Jobs is a service that allows you to define a set of jobs -- remote operations that are sent to and executed on one or more devices connected to AWS IoT. For example, you can define a job that instructs a set of devices to download and install application or firmware updates, reboot, rotate certificates, or perform remote troubleshooting operations.</p> <p> To create a job, you make a job document which is a description of the remote operations to be performed, and you specify a list of targets that should perform the operations. The targets can be individual things, thing groups or both.</p> <p> AWS IoT Jobs sends a message to inform the targets that a job is available. The target starts the execution of the job by downloading the job document, performing the operations it specifies, and reporting its progress to AWS IoT. The Jobs service provides commands to track the progress of a job on a specific target and for all the targets of the job</p>",
+    "docsUrl": "https://aws.amazon.com/iot/",
+    "url": "https://api.apis.guru/v2/specs/amazonaws.com/iot-jobs-data/2017-09-29/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://data.jobs.iot.amazonaws.com/",
+                    "http://data.jobs.iot.amazonaws.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "hmac": {
+                "label": "Authorization (hmac)",
+                "viewClass": "TextFieldView",
+                "note": "Amazon Signature authorization v4"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "GetPendingJobExecutions": {
+            "main": "./lib/actions/GetPendingJobExecutions.js",
+            "title": "Gets the list of all jobs for a thing that are not in a terminal status.",
+            "description": "Gets the list of all jobs for a thing that are not in a terminal status.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetPendingJobExecutions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "StartNextPendingJobExecution": {
+            "main": "./lib/actions/StartNextPendingJobExecution.js",
+            "title": "Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing.",
+            "description": "Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/StartNextPendingJobExecution.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DescribeJobExecution": {
+            "main": "./lib/actions/DescribeJobExecution.js",
+            "title": "Gets details of a job execution.",
+            "description": "Gets details of a job execution.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DescribeJobExecution.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateJobExecution": {
+            "main": "./lib/actions/UpdateJobExecution.js",
+            "title": "Updates the status of a job execution.",
+            "description": "Updates the status of a job execution.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateJobExecution.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
