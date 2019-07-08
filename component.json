@@ -1,6 +1,6 @@
 {
     "title": "AWS IoT Jobs Data Plane",
-    "description": "<p>AWS IoT Jobs is a service that allows you to define a set of jobs -- remote operations that are sent to and executed on one or more devices connected to AWS IoT. For example, you can define a job that instructs a set of devices to download and install application or firmware updates, reboot, rotate certificates, or perform remote troubleshooting operations.</p> <p> To create a job, you make a job document which is a description of the remote operations to be performed, and you specify a list of targets that should perform the operations. The targets can be individual things, thing groups or both.</p> <p> AWS IoT Jobs sends a message to inform the targets that a job is available. The target starts the execution of the job by downloading the job document, performing the operations it specifies, and reporting its progress to AWS IoT. The Jobs service provides commands to track the progress of a job on a specific target and for all the targets of the job</p>",
+    "description": "AWS IoT Jobs is a service that allows you to define a set of jobs -- remote\noperations that are sent to and executed on one or more devices connected to AWS\nIoT. For example, you can define a job that instructs a set of devices to\ndownload and install application or firmware updates, reboot, rotate\ncertificates, or perform remote troubleshooting operations.\n\n To create a job, you make a job document which is a description of the remote\noperations to be performed, and you specify a list of targets that should\nperform the operations. The targets can be individual things, thing groups or\nboth.\n\n AWS IoT Jobs sends a message to inform the targets that a job is available. The\ntarget starts the execution of the job by downloading the job document,\nperforming the operations it specifies, and reporting its progress to AWS IoT.\nThe Jobs service provides commands to track the progress of a job on a specific\ntarget and for all the targets of the job",
     "docsUrl": "https://aws.amazon.com/iot/",
     "url": "https://api.apis.guru/v2/specs/amazonaws.com/iot-jobs-data/2017-09-29/swagger.json",
     "envVars": {},
@@ -20,7 +20,7 @@
                 "label": "Custom Server URL",
                 "viewClass": "TextFieldView"
             },
-            "hmac": {
+            "auth_hmac": {
                 "label": "Authorization (hmac)",
                 "viewClass": "TextFieldView",
                 "note": "Amazon Signature authorization v4"
@@ -38,7 +38,7 @@
     "actions": {
         "GetPendingJobExecutions": {
             "main": "./lib/actions/GetPendingJobExecutions.js",
-            "title": "Gets the list of all jobs for a thing that are not in a terminal status.",
+            "title": "GetPendingJobExecutions",
             "description": "Gets the list of all jobs for a thing that are not in a terminal status.",
             "fields": {
                 "verbose": {
@@ -55,7 +55,7 @@
         },
         "StartNextPendingJobExecution": {
             "main": "./lib/actions/StartNextPendingJobExecution.js",
-            "title": "Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing.",
+            "title": "StartNextPendingJobExecution",
             "description": "Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing.",
             "fields": {
                 "verbose": {
@@ -72,7 +72,7 @@
         },
         "DescribeJobExecution": {
             "main": "./lib/actions/DescribeJobExecution.js",
-            "title": "Gets details of a job execution.",
+            "title": "DescribeJobExecution",
             "description": "Gets details of a job execution.",
             "fields": {
                 "verbose": {
@@ -89,7 +89,7 @@
         },
         "UpdateJobExecution": {
             "main": "./lib/actions/UpdateJobExecution.js",
-            "title": "Updates the status of a job execution.",
+            "title": "UpdateJobExecution",
             "description": "Updates the status of a job execution.",
             "fields": {
                 "verbose": {

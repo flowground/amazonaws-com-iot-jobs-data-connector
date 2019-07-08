@@ -5,7 +5,7 @@
 A generated **flow**ground connector for the AWS IoT Jobs Data Plane API (version 2017-09-29).
 
 Generated from: https://api.apis.guru/v2/specs/amazonaws.com/iot-jobs-data/2017-09-29/swagger.json<br/>
-Generated at: 2019-05-07T17:35:47+03:00
+Generated at: 2019-07-08T14:13:03+03:00
 
 ## API Description
 
@@ -17,7 +17,8 @@ Supported authorization schemes:
 - API Key
 ## Actions
 
-### Gets the list of all jobs for a thing that are not in a terminal status.
+### GetPendingJobExecutions
+> Gets the list of all jobs for a thing that are not in a terminal status.<br/>
 
 #### Input Parameters
 * `thingName` - _required_
@@ -30,7 +31,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing.
+### StartNextPendingJobExecution
+> Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing.<br/>
 
 #### Input Parameters
 * `thingName` - _required_
@@ -43,7 +45,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Gets details of a job execution.
+### DescribeJobExecution
+> Gets details of a job execution.<br/>
 
 #### Input Parameters
 * `thingName` - _required_
@@ -56,7 +59,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Updates the status of a job execution.
+### UpdateJobExecution
+> Updates the status of a job execution.<br/>
 
 #### Input Parameters
 * `thingName` - _required_
